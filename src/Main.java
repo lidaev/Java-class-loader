@@ -2,13 +2,16 @@ import processor.ProcessInvHandler;
 import processor.ProcessedObject;
 
 import java.lang.reflect.Proxy;
+import java.util.ArrayList;
 
 public class Main {
     public static volatile int ERROR = 0;
 
     public static void main(String[] args) throws InterruptedException {
         //read urls
-        String[] urls = {"input7.txt", "input8.txt"};
+        ArrayList<String> urls = new ArrayList();
+        urls.add("input7.txt");
+        urls.add("input8.txt");
 
         //choose functionality
         ProcessedObject process =
@@ -19,10 +22,7 @@ public class Main {
                 );
 
         //create and run threads
-
-        for (int i = 0; i < urls.length; i++) {
-           new Thread(new InputProcessor(urls[i], process)).start();
-        }
+        urls.forEach(url -> new Thread(new InputProcessor(url, process)).start());
     }
 }
 

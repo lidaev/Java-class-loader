@@ -45,8 +45,6 @@ public class InputProcessor implements Runnable{
                 e.printStackTrace();
                 System.out.println("Finishing the program...");
                 Main.ERROR = 1;
-        } finally {
-            in.close();
         }
     }
 }
